@@ -1,7 +1,7 @@
-module "kubernetes_vpc"{
+module "kubernetes-vpc"{
     source = "../../modules/virtual_private_cloud"
     project = var.project
-    network_name = "kubernetes_vpc"
+    network_name = "kubernetes-vpc"
     routing_mode = "REGIONAL"
 
     subnets = [
