@@ -6,6 +6,10 @@ roles/config.agent
 roles/compute.admin
 roles/iam.serviceAccountUser
 roles/storage.admin
+roles/iam.serviceAccountTokenCreator
+roles/iam.serviceAccountAdmin
+roles/container.admin
+
 
 Enabled APIs
 Compute Engine API 

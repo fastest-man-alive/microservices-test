@@ -6,8 +6,8 @@ module "my-cluster"{
     network           = module.kubernetes_vpc.network_name
     subnetwork        = module.kubernetes_vpc.subnets[0].name
     master_cidr_block  = "192.168.0.0/28"
-    pod_range_name    = "k8s-pods"
-    service_range_name= "k8s-services"
+    pod_range_name    = "pods"
+    service_range_name= "services"
     service_account   = module.k8s_service_account.email
     release_channel   = "REGULAR"
     machine_type      = "e2-small"
