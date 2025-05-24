@@ -20,4 +20,5 @@ Now, ssh into the VM and install Terraform
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 3. run 'terraform --version' to verify successful installation
+4. Create a bucket manually to store terraform state file
 
