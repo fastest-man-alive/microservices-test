@@ -58,6 +58,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     machine_type = var.machine_type
     disk_size_gb = var.disk_size
+    disk_type = "pd-standard"
     labels = var.node_labels
     tags = var.node_tags
 

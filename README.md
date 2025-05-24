@@ -9,7 +9,7 @@ roles/storage.admin
 roles/iam.serviceAccountTokenCreator
 roles/iam.serviceAccountAdmin
 roles/container.admin
-
+roles/resourcemanager.projectIamAdmin
 
 Enabled APIs
 Compute Engine API 
