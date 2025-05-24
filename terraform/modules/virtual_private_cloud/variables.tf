@@ -24,7 +24,7 @@ variable "subnets"{
         secondary_ip_ranges = optional(list(object({
             name = string
             cidr = string
-        })))
+        })),[])
     }))
 }
 
