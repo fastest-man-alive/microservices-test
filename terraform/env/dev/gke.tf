@@ -1,4 +1,4 @@
-module "my-cluster"{
+/*module "my-cluster"{
     source            = "../../modules/kubernetes"
     project           = var.project
     region            = var.region
@@ -17,4 +17,4 @@ module "my-cluster"{
     max_node_count    = 2
     node_labels       = { env="dev"}
     node_tags         = ["gke-node"]
-}
+}*/

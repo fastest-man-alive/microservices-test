@@ -1,0 +1,13 @@
+controller:
+  image:
+    registry: asia-south1-docker.pkg.dev
+    image: microservices-test-ps/ingress-nginx/controller
+    tag: v1.12.2
+    digest: "" # leave empty unless using digests
+
+admissionWebhooks:
+  patch:
+    image:
+      registry: asia-south1-docker.pkg.dev
+      image: YOUR_PROJECT_ID/YOUR_REPO/kube-webhook-certgen
+      tag: v1.5.3
