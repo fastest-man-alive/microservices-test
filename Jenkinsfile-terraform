@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', changelog: false, credentialsId: 'github-token', poll: false, url: 'https://github.com/fastest-man-alive/microservices-test.git'
+            }
+        }
+
+        stage('Setup Terraform') {
+            steps {
+                sh '''
+                cd terraform/env/dev
+                terraform init
+                terraform validate
+                '''
+            }
+        }
+
+        stage('Plan Terraform') {
+            steps {
+                sh '''
+                cd terraform/env/dev
+                terraform plan
+                '''
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                timeout(activity: true, time: 10) {
+                    input message: 'Do you approve to continue?', parameters: [
+                        choice(name: 'Approval', choices: ['Yes', 'No'], description: 'Select Yes to continue, No to stop')
+                    ]
+                }
+            }
+        }
+
+        stage('Apply Terraform') {
+            steps {
+                sh '''
+                    cd terraform/env/dev
+                    terraform apply -auto-approve
+                '''
+            }
+        }
+    }
+}

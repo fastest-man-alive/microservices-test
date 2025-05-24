@@ -5,7 +5,7 @@ module "my-cluster"{
     cluster_name      = "my-cluster"
     network           = module.kubernetes_vpc.network_name
     subnetwork        = module.kubernetes_vpc.subnets[0].name
-    service_account   = "insert sa name"
+    service_account   = module.k8s_service_account.email
     release_channel   = "REGULAR"
     machine_type      = "e2-small"
     disk_size         = 50

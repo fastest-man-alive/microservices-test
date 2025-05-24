@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fortune Teller</title></head>
+<body>
+  <h1>🔮 Ask the Fortune Teller</h1>
+  <button onclick="getFortune()">Tell me my fortune</button>
+  <p id="result"></p>
+
+  <script>
+    function getFortune() {
+      fetch('/api/fortune')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("result").innerText = data.fortune;
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fortune-teller
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: fortune.local  #replace with dns
+      http:
+        paths:
+          - path: /fortune
+            pathType: Prefix
+            backend:
+              service:
+                name: fortune-teller
+                port:
+                  number: 80
