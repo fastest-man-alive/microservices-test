@@ -25,6 +25,10 @@ resource "google_container_cluster" "gke" {
     channel = var.release_channel
   }
 
+  node_config {
+    dsik_size_gb = 20
+  }
+
   workload_identity_config {
     workload_pool = "${var.project}.svc.id.goog"
   }
