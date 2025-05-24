@@ -5,6 +5,7 @@ Create a service account for Jenkins with below permissions (jenkins-sa@microser
 roles/config.agent
 roles/compute.admin
 roles/iam.serviceAccountUser
+roles/storage.admin
 
 Enabled APIs
 Compute Engine API 

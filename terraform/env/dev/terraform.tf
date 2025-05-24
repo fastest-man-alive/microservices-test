@@ -6,7 +6,7 @@ terraform{
     }
     }
     backend "gcs"{
-        bucket = "your-bucket"  #update bucket name here
+        bucket = "terraform-state-file-bucket-ps"  #update bucket name here
         prefix = "terraform/state"
     }
 }
