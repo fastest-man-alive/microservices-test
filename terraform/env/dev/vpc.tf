@@ -1,4 +1,4 @@
-module "kubernetes-vpc"{
+module "kubernetes_vpc"{
     source = "../../modules/virtual_private_cloud"
     project = var.project
     network_name = "kubernetes-vpc"
