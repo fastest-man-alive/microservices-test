@@ -32,7 +32,7 @@ variable "firewall_rules"{
     description = "List of firewall rules to create"
     type = list(object({
         name = string
-        direction = 
+        direction = string
         priority = optional(number)
         allow = optional(list(object({
             protocol = string
