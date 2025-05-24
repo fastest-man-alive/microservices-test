@@ -14,7 +14,7 @@ resource "google_compute_subnetwork" "subnetworks" {
   network                  = google_compute_network.vpc_network.id
   private_ip_google_access = true
   stack_type               = "IPV4_ONLY"
-  dynamic secondary_ip_range {
+  dynamic "secondary_ip_range" {
     for_each      = var.subnets[count.index].secondary_ip_ranges
     content{
       range_name    = secondary_ip_ranges.value.name
