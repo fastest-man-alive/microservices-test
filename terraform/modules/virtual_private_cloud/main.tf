@@ -14,13 +14,9 @@ resource "google_compute_subnetwork" "subnetworks" {
   network                  = google_compute_network.vpc_network.id
   private_ip_google_access = true
   stack_type               = "IPV4_ONLY"
-
-  dynamic secondary_ip_ranges {
-    for_each = lookup(var.subnets[count.index], "secondary_ip_ranges",[])
-    content {
-        range_name    = secondary_ip_ranges.value.name
-        ip_cidr_range = secondary_ip_ranges.value.cidr
-    }
+  secondary_ip_range {
+    range_name    = var.subnets[count.index].secondary_ip_ranges.name
+    ip_cidr_range = var.subnets[count.index].secondary_ip_ranges.cidr
   }
 }
 
@@ -33,8 +29,20 @@ resource "google_compute_firewall" "fw_rules" {
 
   direction = each.value.direction
   priority  = lookup(each.value, "priority", 1000)
-  allow     = lookup(each.value, "allow", [])
-  deny      = lookup(each.value, "deny", [])
+  dynamic "allow" {
+    for_each = lookup(each.value, "allow", [])
+    content {
+      protocol = allow.value.protocol
+      ports    = allow.value.ports
+    }
+  }
+  dynamic "deny"{
+    for_each = lookup(each.value, "deny", [])
+    content {
+      protocol = deny.value.protocol
+      ports    = deny.value.ports
+    }
+  }      
 
   source_ranges = lookup(each.value, "source_ranges", null)
   destination_ranges = lookup(each.value, "destination_ranges", null)

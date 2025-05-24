@@ -11,11 +11,11 @@ module "kubernetes_vpc"{
             cidr  = "10.10.0.0/16"
             secondary_ip_ranges = [
                 {
-                    name = "k8s_pods"
+                    name = "pods"
                     cidr = "10.20.0.0/16"
                 },
                 {
-                    name = "k8s_services"
+                    name = "services"
                     cidr = "10.30.0.0/16"
                 }
             ]

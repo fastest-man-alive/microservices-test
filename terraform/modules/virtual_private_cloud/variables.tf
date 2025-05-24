@@ -37,11 +37,11 @@ variable "firewall_rules"{
         allow = optional(list(object({
             protocol = string
             ports = list(string)
-        })))
+        })),[])
         deny = optional(list(object({
             protocol = string
             ports = list(string)
-        })))
+        })),[])
         source_ranges = optional(list(string))
         destination_ranges = optional(list(string))
         target_tags = optional(list(string))
