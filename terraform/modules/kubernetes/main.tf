@@ -26,7 +26,7 @@ resource "google_container_cluster" "gke" {
   }
 
   node_config {
-    dsik_size_gb = 20
+    disk_size_gb = 20
   }
 
   workload_identity_config {
