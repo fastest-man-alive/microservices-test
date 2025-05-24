@@ -5,6 +5,7 @@ module "k8s_service_account" {
   display_name = "Kubernetes Service Account"
   project_roles = [
     "roles/storage.admin",
-    "roles/logging.logWriter"
+    "roles/logging.logWriter",
+    "roles/artifactregistry.reader"
   ]
 }
