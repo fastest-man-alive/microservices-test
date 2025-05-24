@@ -1,6 +1,6 @@
 variable "project"{
     description = "The GCP project id of your dev environment"
-    default = "my-project"
+    default = "microservices-test-ps"
 }
 
 variable "region"{

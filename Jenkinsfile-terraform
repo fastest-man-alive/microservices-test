@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Git Checkout') {
             steps {
                 git branch: 'main', changelog: false, credentialsId: 'github-token', poll: false, url: 'https://github.com/fastest-man-alive/microservices-test.git'
