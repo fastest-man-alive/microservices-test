@@ -12,7 +12,7 @@ terraform{
 }
 
 provider "google" {
-    impersonate_service_account = "your-sa-name"
+    impersonate_service_account = "jenkins-sa@microservices-test-ps.iam.gserviceaccount.com"
     project = var.project
     region = var.region
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
