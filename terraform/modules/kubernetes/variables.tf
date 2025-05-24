@@ -33,6 +33,11 @@ variable "service_range_name"{
     type = string
 }
 
+variable "master_cidr_block"{
+    description = "CIDR range for master node"
+    type = string
+}
+
 variable "release_channel"{
     type = string
     default = "REGULAR"

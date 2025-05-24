@@ -37,7 +37,7 @@ resource "google_container_cluster" "gke" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = false
-    master_ipv4_cidr_block  = "192.168.0.0/28"
+    master_ipv4_cidr_block  = var.master_cidr_block
   }
 
   # Jenkins use case
