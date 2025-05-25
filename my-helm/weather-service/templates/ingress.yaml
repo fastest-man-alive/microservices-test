@@ -2,18 +2,32 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ include "weather-service.fullname" . }}
+  annotations:
+    {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
-  ingressClassName: nginx
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- end }}
   rules:
-    - host: 
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
       http:
         paths:
-          - path: /weather
-            pathType: Prefix
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ .Release.Name }}
+                name: {{ include "weather-service.fullname" $ }}
                 port:
-                  number: 80
+                  number: {{ $.Values.service.port }}
+          {{- end }}
+    {{- end }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- toYaml .Values.ingress.tls | nindent 4 }}
+  {{- end }}
 {{- end }}

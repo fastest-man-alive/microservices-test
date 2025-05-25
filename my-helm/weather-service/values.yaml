@@ -1,19 +1,30 @@
 replicaCount: 1
 
 image:
-  repository: your-dockerhub-username/weather-service
-  tag: latest
+  repository: asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service
+  tag: "v1.2"
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
-  port: 8080
-
-env:
-  OPENWEATHERMAP_API_KEY: your-api-key-here
-  SERVER_PORT: "8080"
-
-resources: {}
+  port: 80
 
 ingress:
-  enabled: false
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: ""
+      paths:
+        - path: /weather
+          pathType: Prefix
+  tls: []  # Configure if using HTTPS
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi

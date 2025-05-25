@@ -50,6 +50,13 @@ f) need to pull other images also
 docker pull registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3
 docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3 asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-webhook-certgen:v1.5.3
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-webhook-certgen:v1.5.3
+9. To build the jaba application go to the location where 'pom.xml' is present and run
+a)mvn clean install
+This will generate target/weather-service-1.0.0.jar.
+b) build the docker image
+docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
+docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
+
 
 
 

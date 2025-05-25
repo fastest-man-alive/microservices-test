@@ -8,7 +8,7 @@ import java.util.Map;
 @RestController
 public class WeatherController {
 
-    @GetMapping("/api/weather")
+    @GetMapping("/")
     public Map<String, String> getWeather() {
         return Map.of(
             "location", "Your City",
