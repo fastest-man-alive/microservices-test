@@ -21,6 +21,18 @@ ingress:
           pathType: Prefix
   tls: []  # Configure if using HTTPS
 
+livenessProbe:
+  path: /actuator/health
+  initialDelaySeconds: 15
+  periodSeconds: 20
+  failureThreshold: 3
+
+readinessProbe:
+  path: /actuator/health
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  failureThreshold: 3
+
 resources:
   limits:
     cpu: 500m
