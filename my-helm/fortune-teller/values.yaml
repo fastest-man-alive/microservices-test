@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: asia-south1-docker.pkg.dev/microservices-test-ps/python-app/fortune-teller
-  tag: v1
+  tag: v1.2
   pullPolicy: IfNotPresent
 
 service:

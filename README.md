@@ -48,8 +48,8 @@ docker tag registry.k8s.io/ingress-nginx/controller:v1.12.2 asia-south1-docker.p
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/controller:v1.12.2
 f) need to pull other images also
 docker pull registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3
-docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3 asia-south1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/kube-webhook-certgen:v1.5.3
-docker push asia-south1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/kube-webhook-certgen:v1.5.3
+docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3 asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-webhook-certgen:v1.5.3
+docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-webhook-certgen:v1.5.3
 
 
 

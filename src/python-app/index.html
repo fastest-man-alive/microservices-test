@@ -8,7 +8,7 @@
 
   <script>
     function getFortune() {
-      fetch('/api/fortune')
+      fetch('api/fortune')
         .then(res => res.json())
         .then(data => {
           document.getElementById("result").innerText = data.fortune;
