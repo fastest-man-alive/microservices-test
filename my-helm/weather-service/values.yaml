@@ -22,14 +22,14 @@ ingress:
   tls: []  # Configure if using HTTPS
 
 livenessProbe:
-  path: /actuator/health
-  initialDelaySeconds: 15
+  path: /
+  initialDelaySeconds: 40
   periodSeconds: 20
   failureThreshold: 3
 
 readinessProbe:
-  path: /actuator/health
-  initialDelaySeconds: 5
+  path: /
+  initialDelaySeconds: 30
   periodSeconds: 10
   failureThreshold: 3
 

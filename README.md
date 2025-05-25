@@ -56,6 +56,9 @@ This will generate target/weather-service-1.0.0.jar.
 b) build the docker image
 docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
+10. To add health checks for java spring boot app, Spring Boot automatically provides a health check:
+GET /actuator/health – basic health info
+We just need to add the dependenices and configure it in the manifest files.
 
 
 
