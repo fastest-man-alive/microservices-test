@@ -8,3 +8,15 @@ image:
 service:
   type: ClusterIP
   port: 80
+
+livenessProbe:
+  path: /
+  initialDelaySeconds: 40
+  periodSeconds: 20
+  failureThreshold: 3
+
+readinessProbe:
+  path: /
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 3
