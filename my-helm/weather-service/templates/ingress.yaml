@@ -4,8 +4,9 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}
 spec:
+  ingressClassName: nginx
   rules:
-    - host: weather.example.com
+    - host: 
       http:
         paths:
           - path: /weather
