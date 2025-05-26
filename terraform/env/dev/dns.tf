@@ -1,7 +1,7 @@
 # Create DNS Managed Zone
 resource "google_dns_managed_zone" "example_zone" {
   name        = "kubernetes-zone"
-  dns_name    = "example.com."  # Note the trailing dot
+  dns_name    = "kaustavps.com."  # Note the trailing dot
   project     = var.project
   description = "Kubernetes DNS zone"
 }

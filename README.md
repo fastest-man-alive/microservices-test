@@ -11,6 +11,7 @@ roles/iam.serviceAccountAdmin
 roles/container.admin
 roles/resourcemanager.projectIamAdmin
 roles/artifactregistry.writer
+roles/dns.admin
 
 Enabled APIs
 Compute Engine API 
