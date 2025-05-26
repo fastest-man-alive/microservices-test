@@ -125,20 +125,20 @@ Few Firewall rules are automatically created when deploying the NGINX ingress co
 Cloud Services Exercise:
 1. All infrastructure provisioning should be automated using Terraform.
     a) Local/Remote terraform state can be used.<br>
-Soln: `Yes, I have used Jenkins to create a Pipeline that automates the deployment of GCP resources using Terraform.`
+`Soln: Yes, I have used Jenkins to create a Pipeline that automates the deployment of GCP resources using Terraform.` <br>
 [Pipeline script](./Jenkinsfile-terraform)
 ![terraform-pipeline](image-1.png)
 
 2. Use Custom VPC.<br>
-Soln: Yes, I have used a custom VPC.
-[Terraform file](./terraform/env/dev/vpc.tf)
+`Soln: Yes, I have used a custom VPC.` <br>
+[Terraform file for VPC](./terraform/env/dev/vpc.tf)
 
 3. GKE Cluster Should not be public.<br>
-Soln: Yes, the public endpoint of control plane has been disabled, so only reasources within the same VPC can reach the control plane.
+`Soln: Yes, the public endpoint of control plane has been disabled, so only reasources within the same VPC can reach the control plane.`
 ![control-plane](image-2.png)
 
 4. Microservice should be deployed and managed using helm charts.<br>
-Soln: I have created helm charts for the microservices.
+`Soln: I have created helm charts for the microservices.`<br>
 [helm-charts](./my-helm)
 ```bash
 helm install ingress-nginx ingress-nginx/ingress-nginx \
@@ -150,34 +150,34 @@ helm install weather-service-app weather service
 ```
 
 5. Microservices should be exposed via Ingress.<br>
-Soln: Yes, I am using an Nginx Ingress Contoller
+`Soln: Yes, I am using an Nginx Ingress Contoller`
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 ```
 6. Microservice should be accessible using a DNS (http or https)<br>
-Soln: Microservices are accessible using the External IP address of the load balancer.
+`Soln: Microservices are accessible using the External IP address of the load balancer.`<br>
 http:
-![http-screenshot](image-4.png)
+![http-screenshot](image-4.png)<br>
 https:
 ![https-screenshot](image-3.png)
 
 
 7. Add unit test for terraform code using Terragrunt.<br>
-Soln: Apologies, need more time to explore Terragrunt as I have not used it before.
+`Soln: Apologies, need more time to explore Terragrunt as I have not used it before.`
 
 8. Create an external data source (use Python script) to create firewall rules with GKE:<br>
-Soln: I have used python to gather the IPs of the worker nodes and control plane endpoint, and then create a firewall rule using these information. The terraform code of the firewall rule is commited to the terraform repo and then the jenkins pipeline is triggered to create the Firewall rule.
-[python-automation](./automation/Jenkinsfile)
-[python-code](./automation/test.py)
+`Soln: I have used python to gather the IPs of the worker nodes and control plane endpoint, and then create a firewall rule using these information. The terraform code of the firewall rule is commited to the terraform repo and then the jenkins pipeline is triggered to create the Firewall rule.`<br>
+[python-automation-jenkinsfile](./automation/Jenkinsfile)<br>
+[python-automation-code](./automation/test.py)
 
 9. Setup health checks for microservices.<br>
-Soln: Yes, I have setup health checks using readiness and liveness probes.
+`Soln: Yes, I have setup health checks using readiness and liveness probes.`
 [health-check](./my-helm/fortune-teller/values.yaml)
 
 10. Securing microservices using HTTPS.<br>
-Soln: Apologies as this could not be done. I need a domain to host the application and then issue SSL certificates.
+`Soln: Apologies as this could not be done. I need a domain to host the application and then issue SSL certificates.`
 
 11. Using remote terraform state.<br>
-Soln: Yes, I have configured remote terraform state.
-[terraform-state](./terraform/env/dev/terraform.tf)
+`Soln: Yes, I have configured remote terraform state.`<br>
+[terraform-backend-confiuration](./terraform/env/dev/terraform.tf)<br>
 ![state-file](image-5.png)
