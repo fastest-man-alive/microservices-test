@@ -5,7 +5,7 @@ global:
 
 controller:
   service:
-    loadBalancerIP: 34.54.17.156
+    loadBalancerIP: 34.47.203.86
   image:
     registry: asia-south1-docker.pkg.dev
     image: microservices-test-ps/ingress-nginx/controller
