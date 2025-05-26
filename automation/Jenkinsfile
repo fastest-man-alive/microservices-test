@@ -4,6 +4,7 @@ pipeline {
     parameters {
     string(name: 'PROJECT_ID', defaultValue: 'microservices-test-ps', description: 'GCP project ID')
     string(name: 'GKE_CLUSTER', defaultValue: '', description: 'Cluster name')
+    string(name: 'REGION', defaultValue: '', description: 'Region where cluster is located')
     }
 
     stages {
