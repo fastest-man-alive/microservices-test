@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                     cd automation
-                    python3 test.py
+                    python3 test.py $PROJECT_ID $GKE_CLUSTER $REGION
                 '''
             }
         }

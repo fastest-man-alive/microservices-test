@@ -67,6 +67,7 @@ We just need to add the dependenices and configure it in the manifest files.
 15. For the python automation, I installed pip and kubernetes python package first
 sudo apt install pip
 pip install kubernetes
+apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 
 
 
