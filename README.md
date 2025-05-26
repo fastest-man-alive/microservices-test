@@ -66,7 +66,8 @@ mvn clean install  # This creates target/weather-service-1.0.0.jar
 Build & Push Docker Image:
 ```
 Build the image:
-```bash docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
+```bash 
+docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
 ```
 
