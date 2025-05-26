@@ -8,6 +8,7 @@ from google.cloud import container_v1
 from kubernetes import client, config
 import sys
 import re
+import os
 
 # Load kube config (works locally with `gcloud container clusters get-credentials`)
 config.load_kube_config()
@@ -116,8 +117,9 @@ def insert_firewall_rule_unique(filepath, endpoint, network_name, rule_name):
 
 
 # ✅ Usage example:
+os.chdir('terraform\env\dev')
 insert_firewall_rule_unique(
-    filepath="terraform\env\dev\vpc.tf",
+    filepath="vpc.tf",
     endpoint=cluster.endpoint,
     network_name="kubernetes-vpc",
     rule_name="allow-custom-ip"
