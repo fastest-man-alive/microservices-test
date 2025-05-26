@@ -39,28 +39,27 @@ https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-
 sudo apt update && sudo apt install terraform
 terraform --version  # Verify installation
 ```
-☁️ Terraform Setup
+☁️ Terraform Setup <br>
 5. Create a GCS bucket to store the Terraform state files (manually or via gcloud).
 
 6. Write your Terraform code and push it to GitHub.
 
 7. Create a Jenkins pipeline to run Terraform commands and provision resources.
 
-🔐 Kubernetes Cluster SA
+🔐 Kubernetes Cluster SA<br>
 Create a Service Account for GKE, and grant the following roles:
+- roles/artifactregistry.reader
+- roles/logging.logWriter
+- roles/storage.admin
 
-roles/artifactregistry.reader
-roles/logging.logWriter
-roles/storage.admin
-
-🐳 Build & Push Microservices (Docker)
+🐳 Build & Push Microservices (Docker)<br>
 Python App:
 ```bash
 docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/python-app/fortune-teller:v1 .
 gcloud auth configure-docker asia-south1-docker.pkg.dev
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/python-app/fortune-teller:v1
 ```
-☕ Java App (Spring Boot):
+☕ Java App (Spring Boot):<br>
 Build the JAR:
 ```bash
 mvn clean install  # This creates target/weather-service-1.0.0.jar
@@ -71,7 +70,7 @@ Build the image:
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
 ```
 
-🌐 Ingress Controller
+🌐 Ingress Controller<br>
 Install Ingress Controller with Helm:
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -99,18 +98,14 @@ docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.5.3 \
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-webhook-certgen:v1.5.3
 ```
 
-🔧 Additional Steps
-Add health checks for both apps (Spring Boot & Python Flask).
+🔧 Additional Steps<br>
+- Add health checks for both apps (Spring Boot & Python Flask).
+- Reserve a static regional IP for the Kubernetes load balancer.
+- Update values.yaml of the Ingress Controller to use the static IP.
+- SSL configuration is not applied in this project due to lack of a domain.
+- Enabled Horizontal Pod Autoscaling (HPA) in the Helm charts.
 
-Reserve a static regional IP for the Kubernetes load balancer.
-
-Update values.yaml of the Ingress Controller to use the static IP.
-
-(Optional) SSL configuration is not applied in this project due to lack of a domain.
-
-Enable Horizontal Pod Autoscaling (HPA) in your Helm chart.
-
-🐍 Python Automation
+🐍 Python Automation<br>
 Install dependencies for GKE automation:
 ```bash
 apt install python3-pip
@@ -118,7 +113,7 @@ apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 pip install kubernetes
 pip install google-cloud-container
 ```
-🔥 Firewall Rules
+🔥 Firewall Rules<br>
 Few Firewall rules are automatically created when deploying the NGINX ingress controller.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,9 +151,9 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 ```
 6. Microservice should be accessible using a DNS (http or https)<br>
 `Soln: Microservices are accessible using the External IP address of the load balancer.`<br>
-http:
+http:<br>
 ![http-screenshot](image-4.png)<br>
-https:
+https:<br>
 ![https-screenshot](image-3.png)
 
 
