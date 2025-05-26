@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', changelog: false, credentialsId: 'github-token', poll: false, url: 'https://github.com/fastest-man-alive/microservices-test.git'
+            }
+        }
+
+        stage('Authenticate to GKE Cluster') {
+            steps {
+                sh '''
+                    gcloud container clusters get-credentials $cluster_name --region $region --project $project_id
+                '''
+            }
+        }
+
+        stage('Get Cluster Details') {
+            steps {
+                sh '''
+                    cd automation
+                    python3 test.py
+                '''
+            }
+        }
+    }
+}

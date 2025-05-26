@@ -64,6 +64,9 @@ We just need to add the dependenices and configure it in the manifest files.
 12. Now mention the IP address in the custom values.yaml file of ingress controller.
 13. I cannot secure the cluster with SSL certificates because I do not have a domain.
 14. Added horizontal pod autoscaling to the microservices
+15. For the python automation, I installed pip and kubernetes python package first
+sudo apt install pip
+pip install kubernetes
 
 
 
