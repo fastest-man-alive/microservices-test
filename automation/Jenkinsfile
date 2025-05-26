@@ -51,7 +51,7 @@ pipeline {
                     git commit -m "Jenkins: added FW rule"
 
                     # Set remote with token auth for pushing
-                    git remote set-url origin https://$GIT_USER:$GIT_TOKEN@github.com/your-org/your-repo.git
+                    git remote set-url origin https://$GIT_USER:$GIT_TOKEN@github.com/fastest-man-alive/microservices-test.git
 
                     git push origin HEAD:main
                     '''
