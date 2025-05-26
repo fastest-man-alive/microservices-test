@@ -23,6 +23,17 @@ module "kubernetes_vpc"{
     ]
 
     firewall_rules = [
+{
+            name = "allow-custom-ip"
+            direction = "INGRESS"
+            source_ranges = ["192.168.0.2"]
+            allow = [
+                {
+                    protocol = "tcp"
+                    ports = ["80", "443"]
+                }
+            ]
+        },
         {
             name = "allow-ssh"
             direction = "INGRESS"
