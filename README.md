@@ -52,7 +52,7 @@ Create a Service Account for GKE, and grant the following roles:
 - roles/logging.logWriter
 - roles/storage.admin
 
-🐳 Build & Push Microservices (Docker)<br>
+🐳 Build & Push Microservices (Docker images)<br>
 Python App:
 ```bash
 docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/python-app/fortune-teller:v1 .
@@ -107,7 +107,7 @@ docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-
 - Enabled Horizontal Pod Autoscaling (HPA) in the Helm charts.
 
 🐍 Python Automation<br>
-Install dependencies for GKE automation:
+Install dependencies for GKE automation in your Jenkins Server:
 ```bash
 apt install python3-pip
 apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
