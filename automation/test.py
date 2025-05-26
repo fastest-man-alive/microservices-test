@@ -117,7 +117,7 @@ def insert_firewall_rule_unique(filepath, endpoint, network_name, rule_name):
 
 # ✅ Usage example:
 insert_firewall_rule_unique(
-    filepath="vpc.tf",
+    filepath="terraform\env\dev\vpc.tf",
     endpoint=cluster.endpoint,
     network_name="kubernetes-vpc",
     rule_name="allow-custom-ip"
