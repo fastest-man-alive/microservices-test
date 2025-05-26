@@ -46,8 +46,8 @@ resource "google_container_cluster" "gke" {
 
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block   = "103.24.126.201/32"  # Add your Jenkins IP or local IP
-      display_name = "local machine"
+      cidr_block   = "10.160.0.3/32"  # Add your Jenkins IP or local IP
+      display_name = "jenkins"
     }
   }
 }
