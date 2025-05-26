@@ -35,5 +35,20 @@ pipeline {
                 '''
             }
         }
+
+        stage('Push to github') {
+            steps {
+                sh '''
+                    git add .
+                    git commit -m "Added FW rule from Python"
+                    git push origin main
+                '''
+            }
+        }
+        stage('Trigger Terraform Pipeline') {
+            steps {
+                build job: 'Terraform/gcp-deploy'
+            }
+        }
     }
 }
