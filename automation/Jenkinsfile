@@ -43,7 +43,7 @@ pipeline {
 
         stage('Push to github') {
             steps {
-                withCredentials([gitUsernamePassword(credentialsId: 'github-user-pass', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-user-pass', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
                     sh '''
                     git config user.name "$GIT_COMMITTER_NAME"
                     git config user.email "$GIT_COMMITTER_EMAIL"
