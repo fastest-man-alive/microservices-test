@@ -44,13 +44,12 @@ resource "google_container_cluster" "gke" {
     master_ipv4_cidr_block  = var.master_cidr_block
   }
 
-  # Jenkins use case
-  # master_authorized_networks_config {
-  #   cidr_blocks {
-  #     cidr_block   = "10.0.0.0/18"
-  #     display_name = "private-subnet"
-  #   }
-  # }
+  master_authorized_networks_config {
+    cidr_blocks {
+      cidr_block   = "10.160.0.3/32"  # Add your Jenkins IP or local IP
+      display_name = "jenkins"
+    }
+  }
 }
 
 resource "google_container_node_pool" "primary_nodes" {
