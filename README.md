@@ -61,6 +61,11 @@ docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-se
 GET /actuator/health – basic health info
 We just need to add the dependenices and configure it in the manifest files.
 
+11. Reserve a Static IP for Kubernetes LB.
+12. Create a Cloud DNS record and link it with the static IP address.
+13. Now mention the IP address in the custom values.yaml file of ingress controller.
+14. 
+
 
 
 

@@ -13,5 +13,5 @@ resource "google_dns_record_set" "example_a_record" {
   ttl          = 300
   managed_zone = google_dns_managed_zone.example_zone.name
   project     = var.project
-  rrdatas = [google_compute_global_address.gke_ingress_ip.address]
+  rrdatas = [google_compute_address.gke_ingress_ip.address]
 }
