@@ -8,7 +8,7 @@ resource "google_dns_managed_zone" "example_zone" {
 
 # Create an A record
 resource "google_dns_record_set" "example_a_record" {
-  name         = "www.mymicroserviceps.com."
+  name         = "microservice.${google_dns_managed_zone.example_zone.dns_name}"
   type         = "A"
   ttl          = 300
   managed_zone = google_dns_managed_zone.example_zone.name
