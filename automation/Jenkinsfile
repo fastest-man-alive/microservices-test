@@ -7,6 +7,11 @@ pipeline {
     string(name: 'REGION', defaultValue: '', description: 'Region where cluster is located')
     }
 
+    environment {
+    GIT_COMMITTER_NAME = "Jenkins CI"
+    GIT_COMMITTER_EMAIL = "jenkins@example.com"
+    }
+
     stages {
         stage('Clean Workspace') {
             steps {
@@ -38,11 +43,19 @@ pipeline {
 
         stage('Push to github') {
             steps {
-                sh '''
-                    git add .
-                    git commit -m "Added FW rule from Python"
-                    git push origin main
-                '''
+                withCredentials([gitUsernamePassword(credentialsId: 'github-user-pass', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+                    sh '''
+                    git config user.name "$GIT_COMMITTER_NAME"
+                    git config user.email "$GIT_COMMITTER_EMAIL"
+
+                    git commit -m "Jenkins: added FW rule"
+
+                    # Set remote with token auth for pushing
+                    git remote set-url origin https://$GIT_USER:$GIT_TOKEN@github.com/your-org/your-repo.git
+
+                    git push origin HEAD:main
+                    '''
+                }
             }
         }
         stage('Trigger Terraform Pipeline') {
