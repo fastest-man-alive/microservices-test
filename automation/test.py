@@ -118,6 +118,7 @@ def insert_firewall_rule_unique(filepath, endpoint, network_name, rule_name):
 
 # ✅ Usage example:
 os.chdir('..')
+print("Current directory:", os.getcwd())
 os.chdir('terraform\env\dev')
 insert_firewall_rule_unique(
     filepath="vpc.tf",
