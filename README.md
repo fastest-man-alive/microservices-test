@@ -11,7 +11,6 @@ roles/iam.serviceAccountAdmin
 roles/container.admin
 roles/resourcemanager.projectIamAdmin
 roles/artifactregistry.writer
-roles/dns.admin
 
 Enabled APIs
 Compute Engine API 
@@ -62,9 +61,9 @@ GET /actuator/health – basic health info
 We just need to add the dependenices and configure it in the manifest files.
 
 11. Reserve a regional Static IP for Kubernetes LB.
-12. Create a Cloud DNS record and link it with the static IP address.
-13. Now mention the IP address in the custom values.yaml file of ingress controller.
-14. 
+12. Now mention the IP address in the custom values.yaml file of ingress controller.
+13. I cannot secure the cluster with SSL certificates because I do not have a domain.
+14. Added horizontal pod autoscaling to the microservices
 
 
 
