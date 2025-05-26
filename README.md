@@ -68,6 +68,8 @@ We just need to add the dependenices and configure it in the manifest files.
 sudo apt install pip
 pip install kubernetes
 apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+pip install google-cloud-container
+
 
 
 
