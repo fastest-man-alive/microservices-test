@@ -117,11 +117,16 @@ def insert_firewall_rule_unique(filepath, endpoint, network_name, rule_name):
 
 
 # ✅ Usage example:
-os.chdir('..')
-print("Current directory:", os.getcwd())
-os.chdir('terraform\env\dev')
+# Get the directory where test.py is located
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Navigate to terraform folder (one level up, then terraform)
+terraform_dir = os.path.abspath(os.path.join(script_dir, '..', 'terraform'))
+
+# Path to the file inside terraform folder
+file_path = os.path.join(terraform_dir, 'env\dev\vpc.tf')
 insert_firewall_rule_unique(
-    filepath="vpc.tf",
+    filepath=file_path,
     endpoint=cluster.endpoint,
     network_name="kubernetes-vpc",
     rule_name="allow-custom-ip"
