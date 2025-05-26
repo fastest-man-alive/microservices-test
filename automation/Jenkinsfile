@@ -47,7 +47,7 @@ pipeline {
                     sh '''
                     git config user.name "$GIT_COMMITTER_NAME"
                     git config user.email "$GIT_COMMITTER_EMAIL"
-
+                    git add .
                     git commit -m "Jenkins: added FW rule"
 
                     # Set remote with token auth for pushing
