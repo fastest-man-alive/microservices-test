@@ -124,7 +124,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 terraform_dir = os.path.abspath(os.path.join(script_dir, '..', 'terraform'))
 
 # Path to the file inside terraform folder
-file_path = os.path.join(terraform_dir, 'env\dev\vpc.tf')
+file_path = os.path.join(terraform_dir, 'env/dev/vpc.tf')
 insert_firewall_rule_unique(
     filepath=file_path,
     endpoint=cluster.endpoint,
