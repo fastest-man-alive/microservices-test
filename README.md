@@ -56,9 +56,7 @@ This will generate target/weather-service-1.0.0.jar.
 b) build the docker image
 docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
-10. To add health checks for java spring boot app, Spring Boot automatically provides a health check:
-GET /actuator/health – basic health info
-We just need to add the dependenices and configure it in the manifest files.
+10. To add health checks for java spring boot app and python app
 
 11. Reserve a regional Static IP for Kubernetes LB.
 12. Now mention the IP address in the custom values.yaml file of ingress controller.
@@ -69,6 +67,7 @@ sudo apt install pip
 pip install kubernetes
 apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 pip install google-cloud-container
+16. Firewall rules are created when you deploy nginx-controller
 
 
 
