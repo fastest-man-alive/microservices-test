@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+    string(name: 'PROJECT_ID', defaultValue: 'microservices-test-ps', description: 'GCP project ID')
+    string(name: 'GKE_CLUSTER', defaultValue: '', description: 'Cluster name')
+    }
+
     stages {
         stage('Clean Workspace') {
             steps {
@@ -16,7 +21,7 @@ pipeline {
         stage('Authenticate to GKE Cluster') {
             steps {
                 sh '''
-                    gcloud container clusters get-credentials $cluster_name --region $region --project $project_id
+                    gcloud container clusters get-credentials $GKE_CLUSTER --region $region --project $PROJECT_ID
                 '''
             }
         }
