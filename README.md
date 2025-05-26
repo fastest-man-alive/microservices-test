@@ -63,9 +63,8 @@ docker push asia-south1-docker.pkg.dev/microservices-test-ps/python-app/fortune-
 Build the JAR:
 ```bash
 mvn clean install  # This creates target/weather-service-1.0.0.jar
-Build & Push Docker Image:
 ```
-Build the image:
+Build & Push Docker Image::
 ```bash 
 docker build -t asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0 .
 docker push asia-south1-docker.pkg.dev/microservices-test-ps/java-app/weather-service:v1.0
@@ -80,7 +79,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   -f ingress-controller-values.yaml
 ```
-Images referenced by the Ingress Controller could not be pulled to the cluster, so I pulled the image into my local, retagged it and pushed it to Artifact Registry. Then updated the image path in the custom 'ingress-controller-values.yaml' file.
+Container Images referenced by the Ingress Controller could not be pulled to the cluster, so I pulled the image into my local, retagged it and pushed it to Artifact Registry. Then updated the image path in the custom 'ingress-controller-values.yaml' file.
 
 Pull and Push Ingress Images to Artifact Registry:
 
@@ -104,7 +103,7 @@ docker push asia-south1-docker.pkg.dev/microservices-test-ps/ingress-nginx/kube-
 - Reserve a static regional IP for the Kubernetes load balancer.
 - Update values.yaml of the Ingress Controller to use the static IP.
 - SSL configuration is not applied in this project due to lack of a domain.
-- Enabled Horizontal Pod Autoscaling (HPA) in the Helm charts.
+- Enable Horizontal Pod Autoscaling (HPA) in the Helm charts.
 
 🐍 Python Automation<br>
 Install dependencies for GKE automation in your Jenkins Server:
@@ -121,7 +120,7 @@ Few Firewall rules are automatically created when deploying the NGINX ingress co
 Cloud Services Exercise:
 1. All infrastructure provisioning should be automated using Terraform.
     a) Local/Remote terraform state can be used.<br>
-`Soln: Yes, I have used Jenkins to create a Pipeline that automates the deployment of GCP resources using Terraform.` <br>
+`Soln: I have used Jenkins to create a Pipeline that automates the deployment of GCP resources using Terraform.` <br>
 [Pipeline script](./Jenkinsfile-terraform)
 ![terraform-pipeline](image-1.png)
 
