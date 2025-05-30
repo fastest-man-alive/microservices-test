@@ -16,18 +16,18 @@ pipeline {
         stage('Setup Test Cases') {
             steps {
                 sh '''
-                cd terraform/env/test
-                go mod init test
+                cd terraform/env/tests
+                go mod init tests
                 go mod tidy
                 '''
             }
         }
 
-        stage('Plan Terraform') {
+        stage('Run Test Cases') {
             steps {
                 sh '''
-                cd terraform/env/dev
-                terraform plan
+                cd terraform/env/test
+                go test -v -timeout 30m
                 '''
             }
         }
