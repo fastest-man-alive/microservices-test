@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('Git Checkout') {
+            steps {
+                git branch: 'main', changelog: false, credentialsId: 'github-token', poll: false, url: 'https://github.com/fastest-man-alive/microservices-test.git'
+            }
+        }
+
+        stage('Setup Test Cases') {
+            steps {
+                sh '''
+                cd terraform/env/test
+                go mod init test
+                go mod tidy
+                '''
+            }
+        }
+
+        stage('Plan Terraform') {
+            steps {
+                sh '''
+                cd terraform/env/dev
+                terraform plan
+                '''
+            }
+        }
+    }
+}
