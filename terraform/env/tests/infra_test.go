@@ -19,6 +19,11 @@ func TestVerifyRegion(t *testing.T) {
 		Vars: map[string]interface{}{
 			"region": "asia-south1",  // Update to your desired target region
 		},
+
+		// Set the Terraform workspace
+		EnvVars: map[string]string{
+            "TF_WORKSPACE": "test",  // Specify the workspace name here
+        },
 	}
 
 	// Clean up resources with "terraform destroy" at the end of the test
