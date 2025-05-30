@@ -17,8 +17,8 @@ pipeline {
             steps {
                 sh '''
                 cd terraform/env/tests
-                go mod init tests
-                go mod tidy
+                /usr/local/go/bin/go mod init tests
+                /usr/local/go/bin/go mod tidy
                 '''
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh '''
                 cd terraform/env/test
-                go test -v -timeout 30m
+                /usr/local/go/bin/go test -v -timeout 30m
                 '''
             }
         }
