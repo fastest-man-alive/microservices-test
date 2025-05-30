@@ -44,17 +44,6 @@ module "kubernetes_vpc"{
                     ports = ["22"]
                 }
             ]
-        },
-        {
-            name = "allow-http"
-            direction = "INGRESS"
-            source_ranges = ["0.0.0.0/0"]
-            allow = [
-                {
-                    protocol = "tcp"
-                    ports = ["80","8080","443","9090","7000","7001","7002"]
-                }
-            ]
         }
     ]
 }
